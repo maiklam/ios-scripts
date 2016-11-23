@@ -11,8 +11,12 @@ magenta=$(tput setaf 5)
 cyan=$(tput setaf 6)
 white=$(tput setaf 7)
 
-if [[ $1 -eq 0 ]] ; then
-  echo ""
+
+SIMULATOR_UUID=$1 
+SEARCH_KEY=$2
+
+if [[ $SIMULATOR_UUID == '' ]] ; then
+  echo ''
   echo -e "${red}[ERROR] No simulator UUID provided${normal}"
   echo ''
   echo '----------------------------------------------------------------------------'
@@ -28,17 +32,14 @@ if [[ $1 -eq 0 ]] ; then
   exit 1
 fi
 
-SIMULATOR_UUID=$1 
-SEARCH_KEY=$2
-
-echo ""
-echo "*************************************"
-echo "Tailing simulator's system.log"
-echo ""
+echo ''
+echo '*************************************'
+echo 'Tailing simulator `system.log`'
+echo ''
 echo "Simulator UUID: ${SIMULATOR_UUID}"
 echo "Search for key: ${SEARCH_KEY}"
-echo "*************************************"
-echo ""
+echo '*************************************'
+echo ''
 
 tail -f ~/Library/Logs/CoreSimulator/${SIMULATOR_UUID}/system.log \
  | grep --color=always --line-buffered "${SEARCH_KEY}" \
