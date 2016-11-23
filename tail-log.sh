@@ -31,4 +31,6 @@ echo "Search for key: ${SEARCH_KEY}"
 echo "*************************************"
 echo ""
 
-tail -f ~/Library/Logs/CoreSimulator/${SIMULATOR_UUID}/system.log | grep "${SEARCH_KEY}"
+tail -f ~/Library/Logs/CoreSimulator/${SIMULATOR_UUID}/system.log \
+ | grep --color=always --line-buffered "${SEARCH_KEY}" \
+ | sed 's/.*D | //'
