@@ -13,8 +13,17 @@ white=$(tput setaf 7)
 
 if [[ $1 -eq 0 ]] ; then
   echo ""
-  printf "%40s\n" "${red}ERROR :: No simulator UUID provided${normal}"
-  printf "%40s\n" "Run [instruments -s devices] or go to [XCode > Window > Devices] to find simulator UUID"
+  echo -e "${red}[ERROR] No simulator UUID provided${normal}"
+  echo ''
+  echo '----------------------------------------------------------------------------'
+  echo '| Please provide simulator UUID and keyword in following format:           |'
+  echo '| $ ./tail-log.sh <SIMULATOR_UUID> <OPTIONAL SEARCH_KEY>                   |'
+  echo '----------------------------------------------------------------------------'
+  echo '| To find UUID of simulator, either                                        |'
+  echo '| * run `instruments -s devices`                                           |' 
+  echo '| * or in xCode, select `Window > Devices`                                 |'
+  echo '| * or in Simulator, select `Hardware > Devices > Manage devices`          |'
+  echo '----------------------------------------------------------------------------'
 
   exit 1
 fi
