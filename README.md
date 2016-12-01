@@ -1,5 +1,5 @@
-# myvf-ios-scripts
-script for myvf ios app testing
+# ios-scripts
+some scripts for ios app testing
 
 ### List of available script
 
